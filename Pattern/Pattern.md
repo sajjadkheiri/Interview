@@ -18,3 +18,8 @@
 ### Behavioral
 
 - Observer
+
+
+## Mediator
+
+### MediatR
