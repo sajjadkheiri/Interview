@@ -1,6 +1,11 @@
 # C# 
 
-### Class vs Record
+## What is CLR
+
+![CLR-Execution-Model](/Resources/CLR.jpg)
+![CLR-Execution-Model](/Resources/CLR-Execution-Model.jpg)
+
+## Class vs Record
 
 - **$\textsf{\color{#008000}{Class}}$** 
 
@@ -10,7 +15,7 @@
 
     A record is a value type that represents an $\textsf{\color{#fbbc05}{immutable}}$ data structure/ It contains fields, properties, and methods, but not events
 
-### Tuple vs Struct:
+## Tuple vs Struct:
 
 - **$\textsf{\color{#008000}{Tuple}}$**
 
@@ -20,7 +25,7 @@
 
     It’s a mutable value type data structure, meaning its fields can be modified after creation / It’s stored on the stack
 
-### OOP
+## OOP
 
 - **$\textsf{\color{#008000}{Encapsulation}}$**
 
@@ -46,7 +51,7 @@
 
     - A drive() method might behave differently for Car and Truck objects, depending on their specific requirements.
 
-### Abstraction vs Interface: 
+## Abstraction vs Interface: 
 
 - **Implementation :**
 
@@ -61,7 +66,7 @@
 - **Interface** is a set of methods that must be implemented
 
 
-### Solid
+## Solid
 
 - **$\textsf{\color{#008000}{Single responsibility}}$**
     
@@ -94,7 +99,7 @@
 
     - Instead of a Car class depending on a concrete GasEngine class, it should depend on an IEngine interface, allowing for easy swapping with an ElectricEngine.
 
-### Dependency Lifecycles
+## Dependency Lifecycles
 
 - **$\textsf{\color{#008000}{Transient}}$**
     
@@ -115,7 +120,7 @@
 
     - A ConfigurationService can be a singleton, as it’s loaded once and reused globally across all requests.
 
-### In / Out / Ref
+## In / Out / Ref
 
 - **$\textsf{\color{#008000}{Ref}}$**
     
@@ -130,11 +135,11 @@
     It cannot modify by the method / It must be initialized before being passed to the method.The motivation is to be used with a struct to improve performance
 
 
-### Boxing vs Unboxing 
+## Boxing vs Unboxing 
 
 The process of converting a Value Type variable (char, int etc.) to a Reference Type variable (object) is called Boxing.
 
-### Coupling vs Cohesion 
+## Coupling vs Cohesion 
 
 - **$\textsf{\color{#008000}{Coupling}}$** is the level of dependency between modules. $\textsf{\color{#fbbc05}{Low coupling is ideal}}$ because it allows modules to $\textsf{\color{#fbbc05}{function independently}}$, making the code $\textsf{\color{#fbbc05}{more maintainable and flexible}}$.
 
@@ -143,10 +148,54 @@ The process of converting a Value Type variable (char, int etc.) to a Reference 
 
     **The $\textsf{\color{#fbbc05}{goal}}$ is to design software with $\textsf{\color{#fbbc05}{low coupling and high cohesion}}$ to improve**
 
-### Thread vs Task
+## Thread vs Task
 
 - **Threads** $\textsf{\color{#fbbc05}{require manual management}}$, while **Tasks** $\textsf{\color{#fbbc05}{handle thread management automatically through the thread pool}}$, making tasks a simpler and often more efficient choice for concurrent programming.
 
-### Background thread vs Foreground thread
+## Background thread vs Foreground thread
 
 **foreground threads** $\textsf{\color{#fbbc05}{keep the application running}}$, while **background threads** $\textsf{\color{#fbbc05}{do not}}$—they allow the application to exit even if they’re still in progress.
+
+## Immutable
+
+An immutable object is an object that we can’t change after we instantiate it
+
+![ObjectTypes](/Resources/ObjectTypes.png)
+
+## Locking
+
+Locking is a mechanism used in C# to $\textsf{\color{#fbbc05}{ensure thread-safety}}$ in multithreaded applications. It $\textsf{\color{#fbbc05}{prevents multiple threads}}$ from $\textsf{\color{#fbbc05}{accessing shared resources}}$ (like variables or objects) simultaneously, which could lead to $\textsf{\color{#fbbc05}{race conditions}}$ or $\textsf{\color{#fbbc05}{inconsistent data}}$.
+
+- Atomic Operations
+    - Interlocked Class
+
+- Exclusive Locking
+    - Lock Statement
+    - Monitor Class
+    - Mutex Class
+    - SpinLock Class
+
+- Non-Exclusive Locking
+    - Semaphore Class
+    - ReaderWriterLockSlim Class
+
+
+## Thread.Sleep vs Task.Delay
+
+### **Thread.Sleep**
+ $\textsf{\color{#fbbc05}{blocks}}$ the thread/ $\textsf{\color{#fbbc05}{synchronous}}$ operation /
+
+### **Task.Delay**
+ $\textsf{\color{#fbbc05}{non-blocking}}$ and $\textsf{\color{#fbbc05}{allows the thread to continue}}$ / $\textsf{\color{#fbbc05}{synchronous operation}}$ that $\textsf{\color{#fbbc05}{returns a Task}}$.
+
+## What is Delegate
+
+## Func vs Action
+
+## What is Middleware
+
+### Action filter vs Middleware
+
+- **Action filters** $\textsf{\color{#fbbc05}{operate at the controller action level}}$, while **middleware applies** $\textsf{\color{#fbbc05}{more globally to all requests in the ASP.NET pipeline}}$.
+
+- Asynchronous programming
