@@ -2,7 +2,7 @@
 
 ## What is CLR
 
-![CLR-Execution-Model](/Resources/CLR.jpg)
+![CLR-Execution-Model](/Resources/CLR-components.png)
 ![CLR-Execution-Model](/Resources/CLR-Execution-Model.jpg)
 
 ## Class vs Record
@@ -199,3 +199,36 @@ Locking is a mechanism used in C# to $\textsf{\color{#fbbc05}{ensure thread-safe
 - **Action filters** $\textsf{\color{#fbbc05}{operate at the controller action level}}$, while **middleware applies** $\textsf{\color{#fbbc05}{more globally to all requests in the ASP.NET pipeline}}$.
 
 - Asynchronous programming
+
+
+## What is GC (Garbage collector)
+
+**GC** is a $\textsf{\color{#fbbc05}{background service}}$ that finds objects your code $\textsf{\color{#fbbc05}{no longer uses}}$ and $\textsf{\color{#fbbc05}{frees their memory automatically}}$.
+
+
+Main goals:
+
+- Avoid memory leaks
+- Avoid manual memory management bugs (double free, use-after-free, etc.)
+- Trade a bit of CPU time for safer / simpler development
+
+
+### Generations in practice
+
+1. Gen 0
+    - Very young objects
+    - Small, short-lived (local variables, small DTOs, Linq results, etc.)
+    - Collected very often, very fast
+
+2. Gen 1
+    - “Middle aged” objects that survived Gen 0
+    - Acts as a buffer between Gen 0 and Gen 2
+
+3. Gen 2
+    - Long-lived objects (singletons, caches, configuration, static data)
+    - Full GC: collecting Gen 2 is the most expensive and happens less frequently
+
+4. LOH (Large Object Heap)
+    - Very large objects (e.g., large arrays, big strings)
+    - Allocation is expensive; collection is tied to Gen 2
+    - Often not compacted (or less frequently), to avoid moving huge memory blocks
